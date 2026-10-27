@@ -1,0 +1,77 @@
+{
+  "intervalMs": 6500,
+  "videoSrc": "",
+  "videoPoster": "/assets/hero-01.jpg",
+  "slides": [
+    {
+      "src": "/assets/hero-01.jpg",
+      "position": "42% center",
+      "line1": "Every song.",
+      "line2": "A piece of me.",
+      "subtitle": "Real life. Raw heart. Honest music."
+    },
+    {
+      "src": "/assets/hero-02.jpg",
+      "position": "45% center",
+      "line1": "Through the storm.",
+      "line2": "Still standing.",
+      "subtitle": "Songs about finding your strength when life changes the plan."
+    },
+    {
+      "src": "/assets/hero-03.jpg",
+      "position": "35% center",
+      "line1": "Chasing light.",
+      "line2": "Finding my way.",
+      "subtitle": "For the roads ahead, and the stories we carry with us."
+    },
+    {
+      "src": "/assets/hero-04.jpg",
+      "position": "center",
+      "line1": "A quiet moment.",
+      "line2": "An honest song.",
+      "subtitle": "Some things are easier to say in a song."
+    },
+    {
+      "src": "/assets/hero-05.jpg",
+      "position": "40% center",
+      "line1": "When it gets quiet.",
+      "line2": "The heart speaks.",
+      "subtitle": "Words for the feelings that stay long after midnight."
+    },
+    {
+      "src": "/assets/hero-06.jpg",
+      "position": "40% center",
+      "line1": "The hard days.",
+      "line2": "The hope that stays.",
+      "subtitle": "A little faith. A little courage. One day at a time."
+    },
+    {
+      "src": "/assets/hero-07.jpg",
+      "position": "center",
+      "line1": "Looking back.",
+      "line2": "Moving forward.",
+      "subtitle": "The past is part of the story. There is still more to write."
+    },
+    {
+      "src": "/assets/hero-08.jpg",
+      "position": "center",
+      "line1": "Ordinary moments.",
+      "line2": "Everything that matters.",
+      "subtitle": "Love lives in the little things we share."
+    },
+    {
+      "src": "/assets/hero-09.jpg",
+      "position": "center",
+      "line1": "My whole world.",
+      "line2": "My reason why.",
+      "subtitle": "For the people who make every tomorrow worth reaching for."
+    },
+    {
+      "src": "/assets/hero-10.jpg",
+      "position": "center",
+      "line1": "Different roads.",
+      "line2": "The same heart.",
+      "subtitle": "Stories connect us, wherever life takes us."
+    }
+  ]
+}

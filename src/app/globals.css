@@ -1,0 +1,24 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme inline {
+  --color-background: #f6f0e4;
+  --color-foreground: #282c25;
+  --color-primary: #101511;
+  --color-primary-foreground: #f6f0e4;
+  --color-secondary: #eee5d4;
+  --color-secondary-foreground: #282c25;
+  --color-muted: #eee5d4;
+  --color-muted-foreground: #6d7063;
+  --color-accent: #dfc59f;
+  --color-accent-foreground: #101511;
+  --color-border: #d8d0c0;
+  --color-input: #d8d0c0;
+  --color-ring: #9a7b52;
+  --color-destructive: #b42318;
+  --radius-lg: 0.75rem;
+  --radius-md: 0.5rem;
+  --radius-sm: 0.25rem;
+  --font-sans: "Manrope", Arial, Helvetica, sans-serif;
+}
+/* All visual styling lives in Tailwind utilities. No legacy CSS selectors. */

@@ -1,0 +1,38 @@
+{
+	"music": {
+		"title": "Music.",
+		"label": "THE SOUND OF EVAN CROSS",
+		"image": "/assets/songrecording.webp",
+		"paragraphs": [
+			"Blending country, soul, blues, and Americana, Evan Cross turns personal moments into songs about love, resilience, and starting again. His music finds its roots in the everyday: the people we hold close, the roads we take, and the moments that change us.",
+			"From quiet reflections to songs that carry a little more fire, every track makes room for vulnerability and hope. Press play, explore the collection, and find a story that feels like your own."
+		]
+	},
+	"lyrics": {
+		"title": "Lyrics.",
+		"label": "BEHIND THE SONGS",
+		"image": "/assets/songwriting.webp",
+		"paragraphs": [
+			"Every song begins with something real: a memory, a question, or a feeling that refuses to fade. For Evan Cross, writing is a way of giving those moments a voice, putting words to what can be difficult to say out loud.",
+			"Written in English and French, these stories explore love, heartbreak, self-worth, and the courage to begin again. Step inside the lyrics and spend a little time with the words behind the music."
+		]
+	},
+	"videos": {
+		"title": "Videos.",
+		"label": "WATCH. LISTEN. FEEL.",
+		"image": "/assets/hero-02.jpg",
+		"paragraphs": [
+			"Some stories find another voice through images. This is a place to explore the visual side of Evan Cross Music, where songs, atmosphere, and emotion meet in a different way.",
+			"Visit the YouTube channel to discover the music and follow along as this collection grows. Whether a song is new to you or already feels familiar, there is always another way to experience its story."
+		]
+	},
+	"about": {
+		"title": "About Evan.",
+		"label": "THE PERSON BEHIND THE MUSIC",
+		"image": "/assets/about-portrait.png",
+		"paragraphs": [
+			"Evan Cross is a Canadian songwriter and independent artist whose music brings together country, soul, blues, and Americana. Writing in English and French, he draws on the experiences that leave a mark: love, heartbreak, resilience, and the quiet courage it takes to begin again.",
+			"His songs make space for honest feelings and imperfect lives. They speak to the small moments that hold us together, the people who give us a reason to keep going, and the hope that something beautiful still lies ahead."
+		]
+	}
+}
