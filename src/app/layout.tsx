@@ -31,6 +31,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="scroll-smooth motion-reduce:scroll-auto">
+      <head>
+        <meta name="apple-mobile-web-app-title" content="Evan Cross" />
+      </head>
       <body
         id="top"
         className="overflow-x-clip bg-background font-sans text-foreground antialiased"
