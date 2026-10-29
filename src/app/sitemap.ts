@@ -1,8 +1,10 @@
 import type { MetadataRoute } from "next";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-	const baseUrl = "https://evancrossmusic.com";
+export const dynamic = "force-static";
 
+const baseUrl = "https://evancrossmusic.com";
+
+export default function sitemap(): MetadataRoute.Sitemap {
 	const routes = ["", "/about", "/music", "/lyrics", "/videos"];
 
 	return routes.map((route) => ({
