@@ -24,7 +24,7 @@ const siteUrl = (
 
 const siteName = "Evan Cross Music";
 
-const ogImage = "/assets/artist-portrait.jpg";
+const ogImage = "/assets/og-image.jpg";
 
 const ogTitle = "Evan Cross | Canadian Singer-Songwriter";
 
