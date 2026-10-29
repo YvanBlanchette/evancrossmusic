@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { Pause, Play } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import data from "@/lib/hero-content.json";
 import { PlatformLinks } from "@/components/platform-links";
 import { cn } from "@/lib/utils";
@@ -19,7 +20,6 @@ const positions = [
 ];
 export function HomeHero() {
   const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
   const [reduced, setReduced] = useState(false);
   const [failed, setFailed] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
@@ -43,7 +43,7 @@ export function HomeHero() {
         elapsed = 0;
         reset.current = false;
       }
-      if (last && !paused && !reduced && !document.hidden && !activeVideo) {
+      if (last && !reduced && !document.hidden && !activeVideo) {
         elapsed += Math.min(time - last, 100);
         if (progress.current)
           progress.current.value = (elapsed / data.intervalMs) * 100;
@@ -57,18 +57,18 @@ export function HomeHero() {
     };
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, [paused, reduced, activeVideo]);
+  }, [reduced, activeVideo]);
   useEffect(() => {
     const el = video.current;
     if (!el || !activeVideo) return;
     const sync = () => {
-      if (paused || document.hidden) el.pause();
+      if (document.hidden) el.pause();
       else void el.play().catch(() => setFailed(true));
     };
     sync();
     document.addEventListener("visibilitychange", sync);
     return () => document.removeEventListener("visibilitychange", sync);
-  }, [paused, activeVideo]);
+  }, [activeVideo]);
   const slide = data.slides[index];
   function select(next: number) {
     reset.current = true;
@@ -134,6 +134,14 @@ export function HomeHero() {
         <p className="mt-6 max-w-xl text-xs leading-7 text-white/80 sm:text-sm">
           {slide.subtitle}
         </p>
+        {/* PRIMARY CTA */}
+        <Link
+          href="/music"
+          className="mt-8 inline-flex min-h-11 items-center gap-4 bg-accent px-5 text-xs font-semibold text-primary transition-colors hover:bg-[#f6f0e4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+        >
+          Explore the music
+          <ArrowUpRight className="size-4" />
+        </Link>
         <PlatformLinks className="mt-7" />
       </div>
       <div className="absolute inset-x-[5vw] bottom-8 flex flex-wrap items-center justify-center gap-4 sm:justify-between">
@@ -172,19 +180,6 @@ export function HomeHero() {
                 </button>
               ))
             : null}
-          <button
-            type="button"
-            onClick={() => setPaused((v) => !v)}
-            aria-label={paused ? "Resume slideshow" : "Pause slideshow"}
-            aria-pressed={paused}
-            className="ml-2 grid size-8 place-items-center rounded-full opacity-50 hover:opacity-100 focus-visible:ring-2 focus-visible:ring-accent"
-          >
-            {paused ? (
-              <Play className="size-3" />
-            ) : (
-              <Pause className="size-3" />
-            )}
-          </button>
         </div>
         <a
           className="hidden text-[8px] tracking-[.2em] text-white/60 sm:inline"

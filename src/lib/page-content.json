@@ -3,10 +3,7 @@
 		"title": "Music.",
 		"label": "THE SOUND OF EVAN CROSS",
 		"image": "/assets/songrecording.webp",
-		"paragraphs": [
-			"Blending country, soul, blues, and Americana, Evan Cross turns personal moments into songs about love, resilience, and starting again. His music finds its roots in the everyday: the people we hold close, the roads we take, and the moments that change us.",
-			"From quiet reflections to songs that carry a little more fire, every track makes room for vulnerability and hope. Press play, explore the collection, and find a story that feels like your own."
-		]
+		"paragraphs": ["Country, soul, blues, and Americana meet in songs about love, resilience, and beginning again."]
 	},
 	"lyrics": {
 		"title": "Lyrics.",
@@ -29,10 +26,10 @@
 	"about": {
 		"title": "About Evan.",
 		"label": "THE PERSON BEHIND THE MUSIC",
-		"image": "/assets/about-portrait.png",
+		"image": "/assets/cheers.png",
 		"paragraphs": [
-			"Evan Cross is a Canadian songwriter and independent artist whose music brings together country, soul, blues, and Americana. Writing in English and French, he draws on the experiences that leave a mark: love, heartbreak, resilience, and the quiet courage it takes to begin again.",
-			"His songs make space for honest feelings and imperfect lives. They speak to the small moments that hold us together, the people who give us a reason to keep going, and the hope that something beautiful still lies ahead."
+			"Evan Cross is a Canadian independent songwriter bringing country, soul, blues, and Americana together in songs shaped by lived experience.",
+			"Writing in English and French, he makes room for love, grief, family, faith, self-worth, and the stubborn hope of beginning again."
 		]
 	}
 }

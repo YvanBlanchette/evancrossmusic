@@ -1,3 +1,5 @@
+import songData from "./songs.json";
+
 export const site = {
 	name: "Evan Cross Music",
 	description: "Canadian songwriter and independent artist blending country, soul, blues, and Americana. Music, lyrics, videos and stories.",
@@ -25,9 +27,13 @@ export const site = {
 export type Song = {
 	id: string;
 	title: string;
+	language: string;
 	lyrics: string;
 	excerpt?: string;
 	links?: { name: string; url: string }[];
 };
 // Only add approved, published lyrics and owned/licensed audio excerpts here.
-export const songs: Song[] = [];
+export const songs: Song[] = songData.map((song) => ({
+	...song,
+	lyrics: song.lyrics.join("\n"),
+}));

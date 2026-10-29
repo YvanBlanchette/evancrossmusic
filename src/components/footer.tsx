@@ -2,16 +2,26 @@ import Link from "next/link";
 import { ArrowUp } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { site } from "@/lib/site";
+import Image from "next/image";
 export function Footer() {
   return (
     <footer className="bg-[#101511] px-[6vw] pt-16 pb-6 text-[#a2ac9c]">
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-2 gap-10 pb-12 md:grid-cols-[1.7fr_1fr_1fr_1.2fr]">
-          <div className="col-span-2 md:col-span-1">
-            <Link href="/" aria-label="Evan Cross home">
-              <Logo className="w-44 sm:w-48" />
-            </Link>
-            <p className="mt-5 text-2xl leading-snug tracking-tight text-[#f6f0e4]">
+        <div className="grid grid-cols-2 gap-x-10 gap-y-12 pb-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+          <div className="col-span-2 flex min-w-0 flex-col justify-start items-start text-left lg:col-span-1">
+<Link
+  href="/"
+  className="block self-start"
+>
+  <Image
+    src="/assets/evan-cross-logo.svg"
+    alt="Evan Cross Music"
+    width={3507}
+    height={1433}
+    className="block h-auto w-30 brightness-0 invert"
+  />
+</Link>
+            <p className="mt-4 max-w-sm text-2xl leading-snug tracking-tight text-[#f6f0e4]">
               Real life. Raw heart.
               <br />
               <span className="font-serif italic text-accent">
@@ -49,24 +59,26 @@ export function Footer() {
               More platforms coming soon.
             </span>
           </FooterColumn>
-          <FooterColumn title="Stay connected">
-            {site.socials.map((item) =>
-              item.url ? (
-                <a
-                  key={item.name}
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {item.name} ↗
-                </a>
-              ) : (
-                <span key={item.name} className="text-white/30">
-                  {item.name} · Coming soon
-                </span>
-              ),
-            )}
-          </FooterColumn>
+          <div className="col-span-2 lg:col-span-1">
+            <FooterColumn title="Stay connected">
+              {site.socials.map((item) =>
+                item.url ? (
+                  <a
+                    key={item.name}
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {item.name} ↗
+                  </a>
+                ) : (
+                  <span key={item.name} className="text-white/30">
+                    {item.name} · Coming soon
+                  </span>
+                ),
+              )}
+            </FooterColumn>
+          </div>
         </div>
         <div className="flex flex-wrap items-center justify-between gap-5 border-t border-white/10 pt-6 text-[9px]">
           <span>
@@ -92,7 +104,7 @@ function FooterColumn({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col items-start gap-4 text-xs [&>a]:transition-colors [&>a:hover]:text-accent">
+    <div className="flex min-w-0 flex-col items-start gap-4 text-xs [&>a]:transition-colors [&>a:hover]:text-accent">
       <h2 className="mb-3 text-[9px] font-semibold tracking-[.2em] text-[#e1e2d8] uppercase">
         {title}
       </h2>

@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { HomeHero } from "@/components/home-hero";
-import { SoundCloudPlayer } from "@/components/soundcloud-player";
+import { GuitarPlayerSection } from "@/components/guitar-player-section";
 export default function HomePage() {
   return (
     <>
@@ -51,13 +51,8 @@ export default function HomePage() {
             <TextLink href="/music">Explore the music</TextLink>
           </div>
         </div>
-        <div className="border-t pt-6">
-          <p className="mb-5 text-[8px] tracking-[.2em] text-muted-foreground">
-            THE EVAN CROSS COLLECTION
-          </p>
-          <SoundCloudPlayer />
-        </div>
       </section>
+      <GuitarPlayerSection className="mt-14 sm:mt-20" />
       <section className="bg-[#101511] px-6 py-16 text-[#f6f0e4] sm:px-12 sm:py-24">
         <div className="mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-[1fr_1.15fr] md:gap-20">
           <div>
@@ -88,7 +83,7 @@ export default function HomePage() {
       </section>
       <section className="relative isolate overflow-hidden bg-black px-6 pt-96 pb-16 text-[#f6f0e4] sm:px-12 md:py-24">
         <Image
-          src="/assets/artist-portrait.jpg"
+          src="/assets/about-portrait.png"
           alt="Evan Cross with his arms crossed"
           fill
           sizes="100vw"
