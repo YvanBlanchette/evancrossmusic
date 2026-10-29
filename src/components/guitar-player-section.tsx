@@ -17,7 +17,7 @@ export function GuitarPlayerSection({
     >
       {/* GUITAR PLAYER */}
       <Image
-        src="/assets/guitar-bg.webp"
+        src="/assets/guitar-bg.jpg"
         alt=""
         fill
         sizes="100vw"

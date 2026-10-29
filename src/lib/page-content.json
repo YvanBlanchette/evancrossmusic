@@ -2,13 +2,13 @@
 	"music": {
 		"title": "Music.",
 		"label": "THE SOUND OF EVAN CROSS",
-		"image": "/assets/songrecording.webp",
+		"image": "/assets/songrecording.jpg",
 		"paragraphs": ["Country, soul, blues, and Americana meet in songs about love, resilience, and beginning again."]
 	},
 	"lyrics": {
 		"title": "Lyrics.",
 		"label": "BEHIND THE SONGS",
-		"image": "/assets/songwriting.webp",
+		"image": "/assets/songwriting.jpg",
 		"paragraphs": [
 			"Every song begins with something real: a memory, a question, or a feeling that refuses to fade. For Evan Cross, writing is a way of giving those moments a voice, putting words to what can be difficult to say out loud.",
 			"Written in English and French, these stories explore love, heartbreak, self-worth, and the courage to begin again. Step inside the lyrics and spend a little time with the words behind the music."

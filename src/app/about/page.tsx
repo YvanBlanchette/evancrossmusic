@@ -108,7 +108,7 @@ export default function AboutPage() {
         <div className="mx-auto grid max-w-7xl items-center gap-10 md:grid-cols-[1.05fr_.95fr] md:gap-16">
           <figure className="relative aspect-[1.2] overflow-hidden">
             <Image
-              src="/assets/songwriting.webp"
+              src="/assets/songwriting.jpg"
               alt="Evan Cross working on lyrics"
               fill
               sizes="(max-width: 768px) 100vw, 600px"
@@ -191,7 +191,7 @@ export default function AboutPage() {
             {/* RIGHT: STAGE PHOTO */}
             <figure className="relative aspect-[3/4] w-full overflow-hidden lg:sticky lg:top-24">
               <Image
-                src="/assets/show-bar-stage.png"
+                src="/assets/show-bar-stage.jpg"
                 alt="Evan Cross performing on stage"
                 fill
                 sizes="(max-width: 1024px) 100vw, 450px"

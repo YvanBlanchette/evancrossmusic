@@ -50,7 +50,7 @@ export default function MusicPage() {
           <div className="grid min-w-0 gap-3 lg:aspect-[2.4] lg:grid-cols-[1.15fr_.85fr]">
             <figure className="relative aspect-video overflow-hidden lg:aspect-auto">
               <Image
-                src="/assets/show-bar-stage.png"
+                src="/assets/show-bar-stage.jpg"
                 alt="Evan Cross performing with a band on stage"
                 fill
                 sizes="(max-width: 1024px) 100vw, 500px"
@@ -102,7 +102,7 @@ export default function MusicPage() {
           </div>
           <figure className="relative aspect-[1.35] min-h-64 overflow-hidden">
             <Image
-              src="/assets/songwriting.webp"
+              src="/assets/songwriting.jpg"
               alt="Evan Cross writing lyrics in the studio"
               fill
               sizes="(max-width: 768px) 100vw, 650px"

@@ -72,11 +72,11 @@ export default function HomePage() {
           </div>
           <figure className="relative aspect-[1.15] overflow-hidden">
             <Image
-              src="/assets/songwriting.jpg"
+              src="/assets/songwriting-color.jpg"
               alt="Evan Cross writing song lyrics in the studio"
               fill
               sizes="(max-width: 768px) 100vw, 650px"
-              className="object-cover object-[43%_center]"
+              className="object-cover object-[43%_center] grayscale"
             />
           </figure>
         </div>
