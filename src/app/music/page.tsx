@@ -63,7 +63,7 @@ export default function MusicPage() {
             </figure>
             <figure className="relative aspect-video overflow-hidden lg:aspect-auto">
               <Image
-                src="/assets/cheers.png"
+                src="/assets/cheers.jpg"
                 alt="Evan Cross raising a glass with his guitar among the band"
                 fill
                 sizes="(max-width: 1024px) 100vw, 370px"

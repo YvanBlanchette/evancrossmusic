@@ -83,7 +83,7 @@ export default function HomePage() {
       </section>
       <section className="relative isolate overflow-hidden bg-black px-6 pt-96 pb-16 text-[#f6f0e4] sm:px-12 md:py-24">
         <Image
-          src="/assets/about-portrait.png"
+          src="/assets/about-portrait.jpg"
           alt="Evan Cross with his arms crossed"
           fill
           sizes="100vw"
