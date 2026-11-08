@@ -3,7 +3,13 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { HomeHero } from "@/components/home-hero";
 import { GuitarPlayerSection } from "@/components/guitar-player-section";
-export default function HomePage() {
+import { PrintifyShopSection } from "@/components/printify-shop-section";
+import { getPrintifyProducts } from "@/lib/printify";
+
+export default async function HomePage() {
+  const products = await getPrintifyProducts();
+  const shopUrl = process.env.PRINTIFY_SHOP_URL;
+
   return (
     <>
       <HomeHero />
@@ -109,6 +115,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <PrintifyShopSection products={products} shopUrl={shopUrl} />
       <section className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-8 px-6 py-14 sm:px-12">
         <div>
           <p className="text-[8px] tracking-[.2em] text-muted-foreground">

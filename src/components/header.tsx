@@ -48,13 +48,6 @@ export function Header() {
                   </span>
                 </Link>
               ))}
-              <button
-                disabled
-                className="flex items-center justify-between border-b border-white/10 py-4 text-left text-3xl text-white/30"
-              >
-                Store
-                <span className="text-[10px] tracking-normal">Coming soon</span>
-              </button>
             </nav>
             <div className="mt-10">
               <PlatformLinks social />

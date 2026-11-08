@@ -38,7 +38,6 @@ export function Footer() {
                 {item.title}
               </Link>
             ))}
-            <span className="text-white/30">Store · Coming soon</span>
           </FooterColumn>
           <FooterColumn title="Listen">
             <a
