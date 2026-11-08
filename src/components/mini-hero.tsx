@@ -1,9 +1,17 @@
 import Image from "next/image";
 import content from "@/lib/page-content.json";
+import frenchContent from "@/lib/page-content.fr.json";
+import type { Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 export type PageName = keyof typeof content;
-export function MiniHero({ page }: { page: PageName }) {
-  const data = content[page];
+export function MiniHero({
+  page,
+  locale = "en",
+}: {
+  page: PageName;
+  locale?: Locale;
+}) {
+  const data = locale === "fr" ? frenchContent[page] : content[page];
   const isLyrics = page === "lyrics";
   const isMusic = page === "music";
   return (

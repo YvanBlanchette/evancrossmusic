@@ -22,7 +22,7 @@ export const site = {
 		{ title: "Lyrics", href: "/lyrics" },
 		// { title: "Videos", href: "/videos" },
 		{ title: "About", href: "/about" },
-		{ title: "Store", href: "/#store" },
+		{ title: "Shop", href: "/#store" },
 	],
 };
 export type Song = {

@@ -1,45 +1,57 @@
+"use client";
 import Link from "next/link";
 import { ArrowUp } from "lucide-react";
-import { Logo } from "@/components/logo";
 import { site } from "@/lib/site";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import {
+  getNavigation,
+  localeFromPath,
+  localizedPath,
+  translations,
+} from "@/lib/i18n";
 export function Footer() {
+  const pathname = usePathname();
+  const locale = localeFromPath(pathname);
+  const copy = translations[locale];
   return (
     <footer className="bg-[#101511] px-[6vw] pt-16 pb-6 text-[#a2ac9c]">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-2 gap-x-10 gap-y-12 pb-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div className="col-span-2 flex min-w-0 flex-col justify-start items-start text-left lg:col-span-1">
-<Link
-  href="/"
-  className="block self-start"
->
-  <Image
-    src="/assets/evan-cross-logo.svg"
-    alt="Evan Cross Music"
-    width={3507}
-    height={1433}
-    className="block h-auto w-30 brightness-0 invert"
-  />
-</Link>
+            <Link
+              href={localizedPath("/", locale)}
+              className="block self-start"
+            >
+              <Image
+                src="/assets/evan-cross-logo.svg"
+                alt="Evan Cross Music"
+                width={3507}
+                height={1433}
+                className="block h-auto w-30 brightness-0 invert"
+              />
+            </Link>
             <p className="mt-4 max-w-sm text-2xl leading-snug tracking-tight text-[#f6f0e4]">
-              Real life. Raw heart.
+              {copy.footer.tagline}
               <br />
               <span className="font-serif italic text-accent">
-                Honest music.
+                {copy.footer.taglineSecond}
               </span>
             </p>
             <p className="mt-5 text-[8px] tracking-[.2em]">
-              INDEPENDENT ARTIST / CANADA
+              {locale === "fr"
+                ? "ARTISTE INDÉPENDANT / CANADA"
+                : "INDEPENDENT ARTIST / CANADA"}
             </p>
           </div>
-          <FooterColumn title="Explore">
-            {site.navigation.map((item) => (
+          <FooterColumn title={copy.footer.explore}>
+            {getNavigation(locale).map((item) => (
               <Link key={item.href} href={item.href}>
                 {item.title}
               </Link>
             ))}
           </FooterColumn>
-          <FooterColumn title="Listen">
+          <FooterColumn title={copy.footer.listen}>
             <a
               href="https://soundcloud.com/evancrossmusic"
               target="_blank"
@@ -55,11 +67,11 @@ export function Footer() {
               YouTube ↗
             </a>
             <span className="mt-2 text-white/30">
-              More platforms coming soon.
+              {copy.footer.morePlatforms}
             </span>
           </FooterColumn>
           <div className="col-span-2 lg:col-span-1">
-            <FooterColumn title="Stay connected">
+            <FooterColumn title={copy.footer.stayConnected}>
               {site.socials.map((item) =>
                 item.url ? (
                   <a
@@ -72,7 +84,7 @@ export function Footer() {
                   </a>
                 ) : (
                   <span key={item.name} className="text-white/30">
-                    {item.name} · Coming soon
+                    {item.name} · {copy.footer.comingSoon}
                   </span>
                 ),
               )}
@@ -81,13 +93,16 @@ export function Footer() {
         </div>
         <div className="flex flex-wrap items-center justify-between gap-5 border-t border-white/10 pt-6 text-[9px]">
           <span>
-            © {new Date().getFullYear()} Evan Cross Music. All rights reserved.
+            © {new Date().getFullYear()} Evan Cross Music.{" "}
+            {copy.footer.allRightsReserved}
           </span>
           <span className="hidden tracking-[.2em] md:inline">
-            SONGS WITH A STORY.
+            {locale === "fr"
+              ? "DES CHANSONS, DES HISTOIRES."
+              : "SONGS WITH A STORY."}
           </span>
           <a href="#top" className="flex items-center gap-4 hover:text-accent">
-            Back to top{" "}
+            {copy.footer.backToTop}{" "}
             <ArrowUp className="size-8 rounded-full border border-white/20 p-2" />
           </a>
         </div>

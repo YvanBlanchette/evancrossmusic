@@ -6,6 +6,8 @@ import { ArrowUpRight } from "lucide-react";
 import data from "@/lib/hero-content.json";
 import { PlatformLinks } from "@/components/platform-links";
 import { cn } from "@/lib/utils";
+import type { Locale } from "@/lib/i18n";
+import { translations } from "@/lib/i18n";
 const positions = [
   "object-[42%_center]",
   "object-[45%_center]",
@@ -18,7 +20,7 @@ const positions = [
   "object-center",
   "object-center",
 ];
-export function HomeHero() {
+export function HomeHero({ locale = "en" }: { locale?: Locale }) {
   const [index, setIndex] = useState(0);
   const [reduced, setReduced] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -70,6 +72,8 @@ export function HomeHero() {
     return () => document.removeEventListener("visibilitychange", sync);
   }, [activeVideo]);
   const slide = data.slides[index];
+  const copy = translations[locale];
+  const slideCopy = copy.homeSlides[index];
   function select(next: number) {
     reset.current = true;
     setIndex((next + data.slides.length) % data.slides.length);
@@ -77,7 +81,7 @@ export function HomeHero() {
   return (
     <section
       aria-roledescription="carousel"
-      aria-label="Evan Cross stories"
+      aria-label={copy.home.carouselLabel}
       className="relative isolate flex min-h-svh items-end overflow-hidden bg-primary px-[6vw] pt-44 pb-40 text-[#f6f0e4] sm:min-h-[780px] sm:pb-48 lg:min-h-svh"
     >
       <div
@@ -116,7 +120,7 @@ export function HomeHero() {
             "absolute inset-0 -z-20 size-full object-cover",
             videoReady ? "opacity-100" : "opacity-0",
           )}
-          aria-label="Evan Cross background video"
+          aria-label={copy.home.backgroundVideo}
         />
       ) : null}
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/90 via-black/30 to-black/20" />
@@ -125,33 +129,34 @@ export function HomeHero() {
           COUNTRY · SOUL · BLUES · AMERICANA
         </p>
         <h1 className="text-[clamp(42px,6vw,92px)] leading-[1.08] font-medium tracking-[-.05em]">
-          {slide.line1}
+          {locale === "fr" ? slideCopy[0] : slide.line1}
           <br />
           <span className="font-serif font-normal text-accent">
-            {slide.line2}
+            {locale === "fr" ? slideCopy[1] : slide.line2}
           </span>
         </h1>
         <p className="mt-6 max-w-xl text-xs leading-7 text-white/80 sm:text-sm">
-          {slide.subtitle}
+          {locale === "fr" ? slideCopy[2] : slide.subtitle}
         </p>
         {/* PRIMARY CTA */}
         <Link
-          href="/music"
+          href={locale === "fr" ? "/fr/music" : "/music"}
           className="mt-8 inline-flex min-h-11 items-center gap-4 bg-accent px-5 text-xs font-semibold text-primary transition-colors hover:bg-[#f6f0e4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
         >
-          Explore the music
+          {copy.home.exploreMusic}
           <ArrowUpRight className="size-4" />
         </Link>
-        <PlatformLinks className="mt-7" />
+        <PlatformLinks className="mt-7" locale={locale} />
       </div>
       <div className="absolute inset-x-[5vw] bottom-8 flex flex-wrap items-center justify-center gap-4 sm:justify-between">
         <span className="hidden text-[8px] tracking-[.2em] text-white/60 sm:inline">
-          EVAN CROSS / INDEPENDENT ARTIST
+          EVAN CROSS /{" "}
+          {locale === "fr" ? "ARTISTE INDÉPENDANT" : "INDEPENDENT ARTIST"}
         </span>
         <div
           className="flex items-center gap-1"
           role="group"
-          aria-label="Hero image navigation"
+          aria-label={copy.home.carouselNavigation}
         >
           {!activeVideo
             ? data.slides.map((item, i) => (
@@ -165,7 +170,7 @@ export function HomeHero() {
                       select(index + (e.key === "ArrowRight" ? 1 : -1));
                     }
                   }}
-                  aria-label={`Image ${i + 1}: ${item.line1} ${item.line2}`}
+                  aria-label={`${copy.home.imageLabel} ${i + 1}: ${locale === "fr" ? `${copy.homeSlides[i][0]} ${copy.homeSlides[i][1]}` : `${item.line1} ${item.line2}`}`}
                   aria-current={i === index ? "true" : undefined}
                   className="group grid size-6 place-items-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                 >
@@ -185,14 +190,14 @@ export function HomeHero() {
           className="hidden text-[8px] tracking-[.2em] text-white/60 sm:inline"
           href="#listen"
         >
-          EXPLORE THE MUSIC ↓
+          {copy.home.exploreMusicHint}
         </a>
       </div>
       <progress
         ref={progress}
         value={0}
         max={100}
-        aria-label="Time until the next hero image"
+        aria-label={copy.home.timeUntilNextImage}
         className="absolute inset-x-0 bottom-0 h-0.5 w-full appearance-none border-0 [&::-webkit-progress-bar]:bg-white/10 [&::-webkit-progress-value]:bg-accent [&::-moz-progress-bar]:bg-accent"
       />
     </section>

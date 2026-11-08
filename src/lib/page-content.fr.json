@@ -1,0 +1,37 @@
+{
+  "music": {
+    "title": "Musique.",
+    "label": "LE SON D’EVAN CROSS",
+    "image": "/assets/songrecording.jpg",
+    "paragraphs": [
+      "La country, la soul, le blues et l’Americana se rencontrent dans des chansons sur l’amour, la résilience et les nouveaux départs."
+    ]
+  },
+  "lyrics": {
+    "title": "Paroles.",
+    "label": "DERRIÈRE LES CHANSONS",
+    "image": "/assets/songwriting.jpg",
+    "paragraphs": [
+      "Chaque chanson commence par quelque chose de vrai : un souvenir, une question ou une émotion qui refuse de s’effacer. Pour Evan Cross, écrire, c’est donner une voix à ces moments et mettre des mots sur ce qu’il est parfois difficile de dire.",
+      "Écrites en français et en anglais, ces histoires explorent l’amour, les peines de cœur, l’estime de soi et le courage de recommencer. Entrez dans les paroles et prenez le temps de découvrir les mots derrière la musique."
+    ]
+  },
+  "videos": {
+    "title": "Vidéos.",
+    "label": "REGARDER. ÉCOUTER. RESSENTIR.",
+    "image": "/assets/hero-02.jpg",
+    "paragraphs": [
+      "Certaines histoires trouvent une autre voix à travers les images. Découvrez l’univers visuel d’Evan Cross Music, où chansons, atmosphère et émotions se rencontrent autrement.",
+      "Visitez la chaîne YouTube pour découvrir la musique et suivre l’évolution de cette collection. Qu’une chanson soit nouvelle pour vous ou déjà familière, son histoire peut toujours se vivre autrement."
+    ]
+  },
+  "about": {
+    "title": "À propos d’Evan.",
+    "label": "LA PERSONNE DERRIÈRE LA MUSIQUE",
+    "image": "/assets/cheers.jpg",
+    "paragraphs": [
+      "Evan Cross est un auteur-compositeur canadien indépendant qui réunit country, soul, blues et Americana dans des chansons inspirées du vécu.",
+      "En français comme en anglais, il fait place à l’amour, au deuil, à la famille, à la foi, à l’estime de soi et à l’espoir tenace de recommencer."
+    ]
+  }
+}

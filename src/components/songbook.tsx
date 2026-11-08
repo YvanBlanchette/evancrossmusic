@@ -3,7 +3,10 @@ import { ChevronDown, Search } from "lucide-react";
 import { useState } from "react";
 import { songs } from "@/lib/site";
 import { cn } from "@/lib/utils";
-export function Songbook() {
+import type { Locale } from "@/lib/i18n";
+import { translations } from "@/lib/i18n";
+export function Songbook({ locale = "en" }: { locale?: Locale }) {
+  const copy = translations[locale].lyrics;
   const [selected, setSelected] = useState(songs[0]?.id);
   const [query, setQuery] = useState("");
   const [language, setLanguage] = useState("all");
@@ -23,10 +26,10 @@ export function Songbook() {
         <div className="flex items-end justify-between gap-4">
           <div>
             <p className="text-[10px] font-medium tracking-[0.18em] text-[#d18a70]">
-              THE ARCHIVE
+              {copy.archive}
             </p>
             <h2 className="mt-2 font-editorial text-3xl text-[#f3eee6]">
-              Song index
+              {copy.songIndex}
             </h2>
           </div>
           <span className="pb-1 font-editorial text-xl text-white/45">
@@ -36,9 +39,9 @@ export function Songbook() {
 
         <div className="mt-7 flex border-b border-white/15 pb-5">
           {[
-            ["all", "All"],
-            ["en", "English"],
-            ["fr", "Français"],
+            ["all", copy.all],
+            ["en", copy.english],
+            ["fr", copy.french],
           ].map(([value, label]) => (
             <button
               key={value}
@@ -58,13 +61,13 @@ export function Songbook() {
         </div>
 
         <label className="relative mt-5 block">
-          <span className="sr-only">Search songs</span>
+          <span className="sr-only">{copy.searchLabel}</span>
           <Search className="pointer-events-none absolute top-1/2 left-0 size-4 -translate-y-1/2 text-white/45" />
           <input
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Find a song"
+            placeholder={copy.searchPlaceholder}
             className="h-11 w-full border-b border-white/20 bg-transparent pl-7 text-sm text-[#f3eee6] outline-none placeholder:text-white/40 focus:border-[#d18a70]"
           />
         </label>
@@ -74,7 +77,7 @@ export function Songbook() {
             htmlFor="song-select"
             className="mb-1 block text-[9px] font-medium tracking-[0.16em] text-white/40 uppercase"
           >
-            Choose a song
+            {copy.chooseSong}
           </label>
           <div className="relative border-b border-white/20 focus-within:border-[#d18a70]">
             <select
@@ -94,7 +97,7 @@ export function Songbook() {
                   </option>
                 ))
               ) : (
-                <option value="">No matching songs</option>
+                <option value="">{copy.noMatchingSongs}</option>
               )}
             </select>
             <ChevronDown
@@ -105,7 +108,7 @@ export function Songbook() {
         </div>
 
         <nav
-          aria-label="Song index"
+          aria-label={copy.songIndexLabel}
           className="mt-5 hidden max-h-[calc(100svh-17rem)] overflow-y-auto pr-2 lg:block"
         >
           {filteredSongs.map((item, index) => (
@@ -128,9 +131,7 @@ export function Songbook() {
         </nav>
 
         {!filteredSongs.length ? (
-          <p className="mt-5 text-sm text-white/50">
-            No songs match your search.
-          </p>
+          <p className="mt-5 text-sm text-white/50">{copy.noSongsMatch}</p>
         ) : null}
       </aside>
 
@@ -143,22 +144,22 @@ export function Songbook() {
                 className="text-[10px] font-medium tracking-[0.18em] text-[#d18a70]"
                 lang={song.language}
               >
-                {song.language === "fr" ? "PAROLES · FRANÇAIS" : "LYRICS · ENGLISH"}
+                {song.language === "fr"
+                  ? copy.frenchLyrics
+                  : copy.englishLyrics}
               </p>
               <span className="text-[10px] tracking-[0.12em] text-white/40">
-                {String(songs.findIndex((item) => item.id === song.id) + 1).padStart(2, "0")} / {String(songs.length).padStart(2, "0")}
+                {String(
+                  songs.findIndex((item) => item.id === song.id) + 1,
+                ).padStart(2, "0")}{" "}
+                / {String(songs.length).padStart(2, "0")}
               </span>
             </div>
             <h2 className="mt-7 max-w-3xl font-editorial text-5xl leading-[0.98] text-[#f3eee6] sm:text-6xl lg:text-7xl">
               {song.title}
             </h2>
-            <p
-              lang={song.language}
-              className="mt-3 text-sm text-white/55"
-            >
-              {song.language === "fr"
-                ? "Paroles de Yvan Junior Blanchette"
-                : "Lyrics by Yvan Junior Blanchette"}
+            <p lang={song.language} className="mt-3 text-sm text-white/55">
+              {song.language === "fr" ? copy.lyricsByFrench : copy.lyricsBy}
             </p>
             <div
               lang={song.language}
@@ -167,12 +168,8 @@ export function Songbook() {
               {lyricBlocks.map((block, index) => {
                 const [firstLine, ...remainingLines] = block.split("\n");
                 const hasSection = /^\[.+\]$/.test(firstLine);
-                const sectionTitle = hasSection
-                  ? firstLine.slice(1, -1)
-                  : null;
-                const verse = hasSection
-                  ? remainingLines.join("\n")
-                  : block;
+                const sectionTitle = hasSection ? firstLine.slice(1, -1) : null;
+                const verse = hasSection ? remainingLines.join("\n") : block;
 
                 return (
                   <section key={`${song.id}-${index}`}>
@@ -193,7 +190,7 @@ export function Songbook() {
           </>
         ) : (
           <p className="border-t border-white/15 pt-6 font-editorial text-3xl text-white/55">
-            Choose a song to read its lyrics.
+            {copy.chooseSongToRead}
           </p>
         )}
       </article>

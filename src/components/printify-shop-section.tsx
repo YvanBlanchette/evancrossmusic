@@ -1,14 +1,19 @@
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import type { PrintifyProduct } from "@/lib/printify";
+import type { Locale } from "@/lib/i18n";
+import { translations } from "@/lib/i18n";
 
 export function PrintifyShopSection({
   products,
   shopUrl,
+  locale = "en",
 }: {
   products: PrintifyProduct[];
   shopUrl?: string;
+  locale?: Locale;
 }) {
+  const copy = translations[locale];
   return (
     <section
       id="store"
@@ -17,15 +22,16 @@ export function PrintifyShopSection({
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 grid items-end gap-6 md:grid-cols-[.6fr_1.4fr_.8fr]">
           <span className="text-[9px] tracking-[.2em] text-muted-foreground">
-            04 / THE MERCH
+            {copy.home.shop}
           </span>
           <h2 className="text-4xl tracking-[-.04em] sm:text-6xl">
-            Wear the <em className="font-serif text-[#9a7b52]">songs.</em>
+            {copy.shop.headline}{" "}
+            <em className="font-serif text-[#9a7b52]">{copy.shop.emphasis}</em>
           </h2>
           <p className="text-xs leading-6 text-muted-foreground">
-            A little piece of the music,
+            {copy.shop.description}
             <br />
-            made to go wherever you do.
+            {copy.shop.descriptionSecond}
           </p>
         </div>
 
@@ -81,7 +87,7 @@ export function PrintifyShopSection({
           </div>
         ) : (
           <p className="border-t border-border pt-6 text-sm text-muted-foreground">
-            New merch is on the way. Check back soon.
+            {copy.shop.empty}
           </p>
         )}
 
@@ -92,7 +98,7 @@ export function PrintifyShopSection({
             rel="noopener noreferrer"
             className="mt-5 inline-flex items-center gap-8 border-b border-current/30 py-3 text-xs font-semibold transition-colors hover:text-[#9a7b52]"
           >
-            Visit the shop
+            {copy.shop.visit}
             <ArrowUpRight className="size-5" />
           </a>
         )}

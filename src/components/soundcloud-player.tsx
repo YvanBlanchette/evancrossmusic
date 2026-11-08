@@ -1,5 +1,9 @@
+import type { Locale } from "@/lib/i18n";
+import { translations } from "@/lib/i18n";
+
 export function SoundCloudPlayer({
-  title = "Evan Cross music catalogue",
+  title,
+  locale = "en",
   height = 420,
   frameClassName = "",
   showFallback = true,
@@ -8,12 +12,14 @@ export function SoundCloudPlayer({
   height?: number;
   frameClassName?: string;
   showFallback?: boolean;
+  locale?: Locale;
 }) {
+  const copy = translations[locale].soundcloud;
   return (
     <div>
       <div className="overflow-hidden rounded-xl bg-[#fffaf1]">
         <iframe
-          title={title}
+          title={title ?? copy.title}
           height={height}
           className={`block w-full border-0 ${frameClassName}`}
           loading="lazy"
@@ -23,14 +29,14 @@ export function SoundCloudPlayer({
       </div>
       {showFallback ? (
         <p className="mt-4 text-right text-xs text-muted-foreground">
-          Player not loading?{" "}
+          {copy.fallback}{" "}
           <a
             href="https://soundcloud.com/evancrossmusic"
             target="_blank"
             rel="noopener noreferrer"
             className="underline underline-offset-4"
           >
-            Listen on SoundCloud ↗
+            {copy.listen} ↗
           </a>
         </p>
       ) : null}

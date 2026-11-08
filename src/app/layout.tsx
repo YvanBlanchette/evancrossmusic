@@ -1,4 +1,3 @@
-
 import type { Metadata, Viewport } from "next";
 
 import "@fontsource/manrope/latin-400.css";
@@ -12,14 +11,18 @@ import { LegacyHashRedirect } from "@/components/legacy-hash-redirect";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { site } from "@/lib/site";
+import {
+  LanguagePreference,
+  LocalizedSkipLink,
+} from "@/components/language-preference";
+import { ArtistSchema } from "@/components/artist-schema";
 
 // --------------------------------------------------
 // SITE CONFIGURATION
 // --------------------------------------------------
 
 const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  "https://evancrossmusic.com"
+  process.env.NEXT_PUBLIC_SITE_URL || "https://evancrossmusic.com"
 ).replace(/\/+$/, "");
 
 const siteName = "Evan Cross Music";
@@ -37,6 +40,9 @@ const ogDescription =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  alternates: {
+    languages: { "en-CA": "/", "fr-CA": "/fr" },
+  },
 
   title: {
     default: site.name,
@@ -179,71 +185,6 @@ export const viewport: Viewport = {
 };
 
 // --------------------------------------------------
-// GOOGLE STRUCTURED DATA
-// MUSIC ARTIST + WEBSITE
-// --------------------------------------------------
-
-const structuredData = {
-  "@context": "https://schema.org",
-
-  "@graph": [
-    {
-      "@type": "MusicGroup",
-
-      "@id": `${siteUrl}/#artist`,
-
-      name: "Evan Cross",
-
-      alternateName: "Evan Cross Music",
-
-      url: siteUrl,
-
-      image: `${siteUrl}${ogImage}`,
-
-      description: ogDescription,
-
-      genre: [
-        "Country",
-        "Americana",
-        "Soul",
-        "Blues",
-        "Country Rock",
-      ],
-
-      foundingLocation: {
-        "@type": "Place",
-        name: "Canada",
-      },
-
-      inLanguage: ["en-CA", "fr-CA"],
-
-      sameAs: [
-        "https://www.youtube.com/@evancrossmusic",
-        "https://soundcloud.com/evancrossmusic",
-      ],
-    },
-
-    {
-      "@type": "WebSite",
-
-      "@id": `${siteUrl}/#website`,
-
-      url: siteUrl,
-
-      name: siteName,
-
-      description: site.description,
-
-      inLanguage: ["en-CA", "fr-CA"],
-
-      publisher: {
-        "@id": `${siteUrl}/#artist`,
-      },
-    },
-  ],
-};
-
-// --------------------------------------------------
 // ROOT LAYOUT
 // --------------------------------------------------
 
@@ -254,18 +195,16 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="en-CA"
       className="scroll-smooth motion-reduce:scroll-auto"
+      suppressHydrationWarning
     >
       <head>
-        {/* Google structured data */}
+        <ArtistSchema />
         <script
-          type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData).replace(
-              /</g,
-              "\\u003c"
-            ),
+            __html:
+              "document.documentElement.lang = location.pathname === '/fr' || location.pathname.startsWith('/fr/') ? 'fr-CA' : 'en-CA';",
           }}
         />
       </head>
@@ -274,20 +213,14 @@ export default function RootLayout({
         id="top"
         className="overflow-x-clip bg-background font-sans text-foreground antialiased"
       >
-        <a
-          href="#main-content"
-          className="sr-only z-[100] rounded-md bg-background p-4 text-foreground focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
-        >
-          Skip to content
-        </a>
+        <LanguagePreference />
 
+        <LocalizedSkipLink />
         <LegacyHashRedirect />
 
         <Header />
 
-        <main id="main-content">
-          {children}
-        </main>
+        <main id="main-content">{children}</main>
 
         <Footer />
       </body>
